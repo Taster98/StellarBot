@@ -47,7 +47,10 @@ def on_chat_message(msg):
 
 # polling timeout
 timeout = 3600.0 #1 minuto
-
+# Gestione chat e comandi
+bot = telepot.Bot(config.getToken)
+bot.message_loop(on_chat_message)
+print ('Listening ...')
 def doWork():
     magicUpdateScraper()
     pass
@@ -56,13 +59,3 @@ l = task.LoopingCall(doWork)
 l.start(timeout) # call ogni minuto
 
 reactor.run()
-
-# Gestione chat e comandi
-bot = telepot.Bot(config.getToken)
-bot.message_loop(on_chat_message)
-
-print ('Listening ...')
-
-import time
-while 1:
-    time.sleep(10)
