@@ -30,7 +30,7 @@ def magicUpdateScraper():
     
 
 # polling timeout
-timeout = 1800.0 #30 secondi
+timeout = 30.0 #30 secondi
 
 def doWork():
     magicUpdateScraper()
