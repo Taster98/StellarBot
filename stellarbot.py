@@ -29,7 +29,7 @@ def magicUpdateScraper():
     print(valore)
 
 # polling timeout
-timeout = 18000.0 + 3600.0 + 3600.0 #7 minuti
+timeout = 7200.0 #2 minuti
 
 print ('Listening ...')
 def doWork():
@@ -37,6 +37,6 @@ def doWork():
     pass
 
 l = task.LoopingCall(doWork)
-l.start(timeout) # call ogni 7 minuti
+l.start(timeout) # call ogni 2 minuti
 
 reactor.run()
