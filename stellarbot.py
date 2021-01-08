@@ -15,6 +15,7 @@ def magicUpdateScraper():
     links = soup.findAll('div', {'class':'calculated-rate'})
     valore = str(links)[293:300]
     converted = "NUOVE STATISTICHE DI STELLAR: \n 1 XLM = "+valore +" €"
+    print(valore)
     global oldvalue
     if(oldvalue == 0.0):
         oldvalue = float(valore)
@@ -26,17 +27,16 @@ def magicUpdateScraper():
         url2 = 'https://api.telegram.org/bot%s/sendMessage?chat_id=%s&text=%s' % (
     config.getToken(), config.getId(),converted)
         _ = requests.get(url2, timeout=10)
-    print(valore)
+    
 
 # polling timeout
-timeout = 7200.0 #2 minuti
+timeout = 1800.0 #30 secondi
 
-print ('Listening ...')
 def doWork():
     magicUpdateScraper()
     pass
 
 l = task.LoopingCall(doWork)
-l.start(timeout) # call ogni 2 minuti
+l.start(timeout) # call ogni 30 secondi
 
 reactor.run()
