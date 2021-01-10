@@ -30,13 +30,13 @@ def magicUpdateScraper():
     
 
 # polling timeout
-timeout = 30.0 #30 secondi
+timeout = 120.0 #120 secondi
 
 def doWork():
     magicUpdateScraper()
     pass
 
 l = task.LoopingCall(doWork)
-l.start(timeout) # call ogni 30 secondi
+l.start(timeout) # call ogni 120 secondi
 
 reactor.run()
